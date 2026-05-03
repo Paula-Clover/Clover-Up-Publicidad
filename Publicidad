@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clover Up Publicidad | Agencia de Marketing Digital</title>
+  <meta name="description" content="Clover Up Publicidad — Estrategia, diseño y comunicación que hace crecer tu marca." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+          },
+          colors: {
+            clover: {
+              50:  '#f0fdf4',
+              100: '#dcfce7',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              900: '#052e16',
+            },
+            dark: {
+              900: '#050d07',
+              800: '#0a1a0c',
+              700: '#0f2412',
+              600: '#1a3320',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #050d07;
+      color: #f0fdf4;
+      overflow-x: hidden;
+    }
+
+    /* ─── Noise Texture Overlay ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ─── Typography ─── */
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+    /* ─── Glow Effects ─── */
+    .glow-green {
+      box-shadow: 0 0 40px rgba(74, 222, 128, 0.25), 0 0 80px rgba(74, 222, 128, 0.08);
+    }
+    .text-glow {
+      text-shadow: 0 0 60px rgba(74, 222, 128, 0.4);
+    }
+
+    /* ─── Gradient Mesh Background ─── */
+    .hero-mesh {
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(34, 197, 94, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(74, 222, 128, 0.06) 0%, transparent 50%),
+        #050d07;
+    }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes floatClover {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%       { transform: translateY(-14px) rotate(8deg); }
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(0.9); opacity: 0.7; }
+      70%  { transform: scale(1.4); opacity: 0; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .anim-fade-up   { animation: fadeUp 0.8s ease forwards; }
+    .anim-fade-up-2 { animation: fadeUp 0.8s 0.15s ease both; }
+    .anim-fade-up-3 { animation: fadeUp 0.8s 0.3s ease both; }
+    .anim-fade-up-4 { animation: fadeUp 0.8s 0.45s ease both; }
+    .anim-fade-in   { animation: fadeIn 1s 0.2s ease both; }
+
+    .float-clover { animation: floatClover 5s ease-in-out infinite; }
+
+    /* ─── WhatsApp Button Pulse ─── */
+    .wa-pulse::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background: rgba(74, 222, 128, 0.5);
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    /* ─── Gradient Text ─── */
+    .grad-text {
+      background: linear-gradient(135deg, #4ade80 0%, #86efac 50%, #4ade80 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    /* ─── Service Card ─── */
+    .service-card {
+      background: linear-gradient(135deg, rgba(15, 36, 18, 0.8) 0%, rgba(10, 26, 12, 0.9) 100%);
+      border: 1px solid rgba(74, 222, 128, 0.12);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .service-card:hover {
+      border-color: rgba(74, 222, 128, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(74, 222, 128, 0.12);
+    }
+    .service-card:hover .service-icon {
+      background: rgba(74, 222, 128, 0.2);
+      transform: scale(1.1);
+    }
+
+    .service-icon {
+      background: rgba(74, 222, 128, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    /* ─── Testimonial Card ─── */
+    .testi-card {
+      background: linear-gradient(135deg, rgba(15, 36, 18, 0.6) 0%, rgba(5, 13, 7, 0.8) 100%);
+      border: 1px solid rgba(74, 222, 128, 0.1);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(74, 222, 128, 0.3);
+    }
+
+    /* ─── Nav ─── */
+    #navbar {
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(5, 13, 7, 0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(74, 222, 128, 0.1);
+    }
+
+    /* ─── Divider ─── */
+    .green-divider {
+      background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.5), transparent);
+      height: 1px;
+    }
+
+    /* ─── CTA Button ─── */
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #4ade80);
+      color: #050d07;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(74, 222, 128, 0.45);
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-outline {
+      border: 1.5px solid rgba(74, 222, 128, 0.5);
+      color: #4ade80;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: rgba(74, 222, 128, 0.08);
+      border-color: #4ade80;
+      transform: translateY(-2px);
+    }
+
+    /* ─── Scroll bar ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #050d07; }
+    ::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 3px; }
+
+    /* ─── Stars ─── */
+    .stars { color: #4ade80; letter-spacing: 2px; }
+
+    /* ─── Section badge ─── */
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 222, 128, 0.25);
+      background: rgba(74, 222, 128, 0.06);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #4ade80;
+    }
+
+    /* ─── Clover SVG ─── */
+    .clover-bg {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="relative">
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-clover-400 to-clover-600 flex items-center justify-center glow-green transition-transform group-hover:scale-105">
+          <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12 C12 12, 7 9, 7 5.5 C7 3.5 8.5 2 10.5 2 C11.4 2 12 2.7 12 2.7 C12 2.7 12.6 2 13.5 2 C15.5 2 17 3.5 17 5.5 C17 9 12 12 12 12Z" fill="#050d07"/>
+            <path d="M12 12 C12 12, 15 7, 18.5 7 C20.5 7 22 8.5 22 10.5 C22 11.4 21.3 12 21.3 12 C21.3 12 22 12.6 22 13.5 C22 15.5 20.5 17 18.5 17 C15 17 12 12 12 12Z" fill="#050d07"/>
+            <path d="M12 12 C12 12, 9 17, 5.5 17 C3.5 17 2 15.5 2 13.5 C2 12.6 2.7 12 2.7 12 C2.7 12 2 11.4 2 10.5 C2 8.5 3.5 7 5.5 7 C9 7 12 12 12 12Z" fill="#050d07"/>
+            <path d="M12 12 C12 12, 12 14, 11.5 17.5 C11.2 19.8 12 22 12 22 C12 22 12.8 19.8 12.5 17.5 C12 14 12 12 12 12Z" fill="#050d07"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-display font-800 text-white text-lg leading-none">Clover Up</span>
+          <span class="block text-clover-400 text-xs font-body font-light tracking-widest">PUBLICIDAD</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#servicios" class="text-sm font-body text-white/60 hover:text-clover-400 transition-colors">Servicios</a>
+        <a href="#testimonios" class="text-sm font-body text-white/60 hover:text-clover-400 transition-colors">Testimonios</a>
+        <a href="#contacto" class="text-sm font-body text-white/60 hover:text-clover-400 transition-colors">Contacto</a>
+        <a href="https://wa.me/5493412345678?text=Hola%20Clover%20Up%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank"
+           class="btn-primary px-5 py-2.5 rounded-xl text-sm">
+          ¡Hablemos!
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5" aria-label="Menú">
+        <span class="w-5 h-0.5 bg-white transition-all"></span>
+        <span class="w-5 h-0.5 bg-white transition-all"></span>
+        <span class="w-3 h-0.5 bg-clover-400 transition-all"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden mt-4 mx-0 rounded-2xl bg-dark-800 border border-clover-400/10 p-6">
+      <div class="flex flex-col gap-4">
+        <a href="#servicios" class="font-body text-white/70 hover:text-clover-400 transition-colors" onclick="closeMobile()">Servicios</a>
+        <a href="#testimonios" class="font-body text-white/70 hover:text-clover-400 transition-colors" onclick="closeMobile()">Testimonios</a>
+        <a href="#contacto" class="font-body text-white/70 hover:text-clover-400 transition-colors" onclick="closeMobile()">Contacto</a>
+        <a href="https://wa.me/5493412345678?text=Hola%20Clover%20Up%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank"
+           class="btn-primary px-5 py-3 rounded-xl text-sm text-center mt-2">
+          ¡Hablemos por WhatsApp!
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section id="inicio" class="hero-mesh min-h-screen flex items-center pt-24 pb-20 px-6 relative overflow-hidden">
+    <!-- Decorative Clover -->
+    <div class="clover-bg right-0 top-16 w-96 h-96 opacity-5 float-clover">
+      <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+        <circle cx="65"  cy="65"  r="55" fill="#4ade80"/>
+        <circle cx="135" cy="65"  r="55" fill="#4ade80"/>
+        <circle cx="65"  cy="135" r="55" fill="#4ade80"/>
+        <circle cx="135" cy="135" r="55" fill="#4ade80"/>
+        <rect x="93" y="145" width="14" height="60" rx="7" fill="#4ade80"/>
+      </svg>
+    </div>
+
+    <!-- Decorative circles -->
+    <div class="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-clover-400/5 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-48 h-48 rounded-full bg-clover-500/5 blur-2xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto w-full relative z-10">
+      <div class="max-w-4xl">
+        <div class="anim-fade-up mb-6">
+          <span class="section-badge">
+            <span class="w-1.5 h-1.5 rounded-full bg-clover-400 animate-pulse"></span>
+            Agencia de Marketing Digital
+          </span>
+        </div>
+
+        <h1 class="anim-fade-up-2 font-display font-800 text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6">
+          Hacemos que tu<br />
+          marca <span class="grad-text text-glow">crezca</span><br />
+          <span class="text-white/30">con estrategia.</span>
+        </h1>
+
+        <p class="anim-fade-up-3 font-body font-light text-lg md:text-xl text-white/55 max-w-xl leading-relaxed mb-10">
+          En Clover Up transformamos ideas en campañas poderosas. Diseño, contenido y estrategia digital para que tu negocio destaque donde importa.
+        </p>
+
+        <div class="anim-fade-up-4 flex flex-col sm:flex-row gap-4">
+          <a href="https://wa.me/5493412345678?text=Hola%20Clover%20Up%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank"
+             class="btn-primary inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-base">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultá gratis por WhatsApp
+          </a>
+          <a href="#servicios" class="btn-outline inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base">
+            Ver servicios
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="anim-fade-in mt-16 flex flex-wrap gap-8">
+          <div>
+            <div class="font-display font-700 text-3xl text-clover-400">+120</div>
+            <div class="font-body text-sm text-white/40 mt-1">Clientes satisfechos</div>
+          </div>
+          <div class="w-px bg-white/10"></div>
+          <div>
+            <div class="font-display font-700 text-3xl text-clover-400">5 años</div>
+            <div class="font-body text-sm text-white/40 mt-1">En el mercado</div>
+          </div>
+          <div class="w-px bg-white/10"></div>
+          <div>
+            <div class="font-display font-700 text-3xl text-clover-400">+300</div>
+            <div class="font-body text-sm text-white/40 mt-1">Campañas exitosas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="green-divider mx-auto max-w-6xl px-6"></div>
+
+  <!-- ═══════════════ SERVICES ═══════════════ -->
+  <section id="servicios" class="py-24 px-6 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-dark-800/30 to-transparent pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-14">
+        <span class="section-badge mb-5 inline-flex">Lo que hacemos</span>
+        <h2 class="font-display font-700 text-4xl md:text-5xl text-white leading-tight max-w-xl">
+          Servicios diseñados para <span class="grad-text">potenciar</span> tu marca
+        </h2>
+        <p class="font-body font-light text-white/50 mt-4 max-w-lg text-base leading-relaxed">
+          Cada servicio está pensado para generar resultados reales y medibles para tu negocio.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Service 1 -->
+        <div class="service-card rounded-2xl p-7">
+          <div class="service-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-clover-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Diseño Gráfico</h3>
+          <p class="font-body font-light text-white/50 text-sm leading-relaxed">Identidad visual, logotipos, flyers, banners y todo lo que tu marca necesita para comunicar con impacto.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card rounded-2xl p-7">
+          <div class="service-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-clover-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Gestión de Redes</h3>
+          <p class="font-body font-light text-white/50 text-sm leading-relaxed">Administramos tus redes sociales con contenido estratégico, creativo y alineado con tus objetivos de negocio.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card rounded-2xl p-7">
+          <div class="service-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-clover-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Publicidad Paga (Ads)</h3>
+          <p class="font-body font-light text-white/50 text-sm leading-relaxed">Campañas en Meta Ads y Google Ads optimizadas para maximizar tu retorno de inversión y generar clientes reales.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card rounded-2xl p-7">
+          <div class="service-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-clover-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Diseño Web</h3>
+          <p class="font-body font-light text-white/50 text-sm leading-relaxed">Sitios web modernos, rápidos y optimizados para conversión. Desde landing pages hasta tiendas online.</p>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card rounded-2xl p-7">
+          <div class="service-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-clover-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Producción Audiovisual</h3>
+          <p class="font-body font-light text-white/50 text-sm leading-relaxed">Videos para redes, reels, spots publicitarios y contenido visual que conecta con tu audiencia.</p>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card rounded-2xl p-7">
+          <div class="service-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-clover-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-lg text-white mb-2">Estrategia de Marketing</h3>
+          <p class="font-body font-light text-white/50 text-sm leading-relaxed">Planificamos tu presencia digital de forma integral: objetivos, canales, mensajes y métricas claras.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="green-divider mx-auto max-w-6xl px-6"></div>
+
+  <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+  <section id="testimonios" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-14">
+        <span class="section-badge mb-5 inline-flex">Testimonios</span>
+        <h2 class="font-display font-700 text-4xl md:text-5xl text-white leading-tight">
+          Lo que dicen nuestros <span class="grad-text">clientes</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <!-- Testimonial 1 -->
+        <div class="testi-card rounded-2xl p-7">
+          <div class="stars text-base mb-4">★★★★★</div>
+          <p class="font-body font-light text-white/65 text-sm leading-relaxed mb-6">
+            "Desde que trabajamos con Clover Up, nuestras ventas aumentaron un 40%. El equipo es muy profesional y siempre están disponibles para resolver cualquier consulta."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-clover-400/30 to-clover-600/30 border border-clover-400/20 flex items-center justify-center font-display font-700 text-clover-400 text-sm">MR</div>
+            <div>
+              <div class="font-display font-700 text-white text-sm">Martina Rodríguez</div>
+              <div class="font-body text-white/35 text-xs">Dueña, Boutique MR</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testi-card rounded-2xl p-7">
+          <div class="stars text-base mb-4">★★★★★</div>
+          <p class="font-body font-light text-white/65 text-sm leading-relaxed mb-6">
+            "El rediseño de nuestra identidad visual fue impresionante. Clover Up entendió exactamente lo que queríamos y lo superó. Muy recomendados."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-clover-400/30 to-clover-600/30 border border-clover-400/20 flex items-center justify-center font-display font-700 text-clover-400 text-sm">LP</div>
+            <div>
+              <div class="font-display font-700 text-white text-sm">Lucas Peralta</div>
+              <div class="font-body text-white/35 text-xs">Director, LP Construcciones</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testi-card rounded-2xl p-7">
+          <div class="stars text-base mb-4">★★★★★</div>
+          <p class="font-body font-light text-white/65 text-sm leading-relaxed mb-6">
+            "Gestionan nuestras redes con una calidad increíble. El contenido que crean conecta de verdad con nuestra audiencia. ¡Los mejores!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-clover-400/30 to-clover-600/30 border border-clover-400/20 flex items-center justify-center font-display font-700 text-clover-400 text-sm">SG</div>
+            <div>
+              <div class="font-display font-700 text-white text-sm">Sofía García</div>
+              <div class="font-body text-white/35 text-xs">Fundadora, Café Sofía</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="green-divider mx-auto max-w-6xl px-6"></div>
+
+  <!-- ═══════════════ CTA / CONTACTO ═══════════════ -->
+  <section id="contacto" class="py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-dark-700/40 via-transparent to-dark-800/20 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-clover-400/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <span class="section-badge mb-6 inline-flex">Contacto</span>
+      <h2 class="font-display font-800 text-4xl md:text-6xl text-white leading-tight mb-6">
+        ¿Listo para llevar tu<br />marca al <span class="grad-text">siguiente nivel</span>?
+      </h2>
+      <p class="font-body font-light text-white/50 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+        Contáctanos hoy mismo y recibí una consultoría gratuita. Te mostramos cómo podemos transformar tu presencia digital.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://wa.me/5493412345678?text=Hola%20Clover%20Up%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank"
+           class="relative btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-2xl text-lg glow-green">
+          <span class="wa-pulse absolute inset-0 rounded-2xl"></span>
+          <svg class="w-6 h-6 relative" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span class="relative">Escribinos por WhatsApp</span>
+        </a>
+      </div>
+
+      <p class="font-body text-white/30 text-sm mt-6">Respondemos en menos de 24 horas · Sin compromiso</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="border-t border-clover-400/10 py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-clover-400 to-clover-600 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12 C12 12, 7 9, 7 5.5 C7 3.5 8.5 2 10.5 2 C11.4 2 12 2.7 12 2.7 C12 2.7 12.6 2 13.5 2 C15.5 2 17 3.5 17 5.5 C17 9 12 12 12 12Z" fill="#050d07"/>
+            <path d="M12 12 C12 12, 15 7, 18.5 7 C20.5 7 22 8.5 22 10.5 C22 11.4 21.3 12 21.3 12 C21.3 12 22 12.6 22 13.5 C22 15.5 20.5 17 18.5 17 C15 17 12 12 12 12Z" fill="#050d07"/>
+            <path d="M12 12 C12 12, 9 17, 5.5 17 C3.5 17 2 15.5 2 13.5 C2 12.6 2.7 12 2.7 12 C2.7 12 2 11.4 2 10.5 C2 8.5 3.5 7 5.5 7 C9 7 12 12 12 12Z" fill="#050d07"/>
+            <path d="M12 12 C12 12, 12 14, 11.5 17.5 C11.2 19.8 12 22 12 22 C12 22 12.8 19.8 12.5 17.5 C12 14 12 12 12 12Z" fill="#050d07"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-display font-700 text-white text-sm">Clover Up</span>
+          <span class="text-clover-400 text-xs font-body font-light"> Publicidad</span>
+        </div>
+      </div>
+
+      <div class="flex gap-6">
+        <a href="#servicios" class="font-body text-sm text-white/35 hover:text-clover-400 transition-colors">Servicios</a>
+        <a href="#testimonios" class="font-body text-sm text-white/35 hover:text-clover-400 transition-colors">Testimonios</a>
+        <a href="#contacto" class="font-body text-sm text-white/35 hover:text-clover-400 transition-colors">Contacto</a>
+      </div>
+
+      <p class="font-body text-xs text-white/25">© 2025 Clover Up Publicidad. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════ SCRIPTS ═══════════════ -->
+  <script>
+    // Navbar scroll behavior
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    function closeMobile() {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // Scroll reveal
+    const observerOptions = {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .testi-card').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = `opacity 0.6s ${i * 0.08}s ease, transform 0.6s ${i * 0.08}s ease`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
